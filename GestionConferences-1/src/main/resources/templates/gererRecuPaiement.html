@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gerer Recu Interface</title>
+</head>
+<body>
+<form method="POST" th:action="@{/gererRecuPaiement}" th:object="${validate}">
+
+		<div th:if="${#fields.hasErrors()}">
+			<span style="color: red" class="validationError"> Please
+				correct the problems below and resubmit. </span>
+		</div>
+
+		<h2>All paiement need to send facture</h2>
+		<table>
+			<tr>
+				<td></td>
+				<td>Title</td>
+				<td>FirstName</td>
+				<td>LastName</td>
+				<td>Institution</td>
+				<td>Address</td>
+				<td>Zip</td>
+				<td>City</td>
+				<td>Country</td>
+				<td>Email</td>
+				<td>Phone</td>
+				<td>Date de paiement</td>
+				<td>Conference</td>
+				<td>Type d'inscription</td>
+				<td>Prix</td>
+			</tr>
+			<tr th:each="p : ${paiements}">
+				<td><input name="id" type="checkbox" th:value="${p.id}" /></td>
+				<td><span th:text="${p.title}"></span></td>
+				<td><span th:text="${p.firstName}"></span></td>
+				<td><span th:text="${p.lastName}"></span></td>
+				<td><span th:text="${p.institution}"></span></td>
+				<td><span th:text="${p.address}"></span></td>
+				<td><span th:text="${p.zip}"></span></td>
+				<td><span th:text="${p.city}"></span></td>
+				<td><span th:text="${p.country}"></span></td>
+				<td><span th:text="${p.email}"></span></td>
+				<td><span th:text="${p.phone}"></span></td>
+				<td><span th:text="${p.datepaiement}"></span></td>
+				<td><span th:text="${allconference[p.idConference].name}"></span></td>
+				<td><span th:text="${listtype[p.idType].libelle}"></span></td>
+				<td><span th:text="${listtype[p.idType].tarif}"></span></td>
+			</tr>
+		</table>
+		<input name="action" type="submit" value="Envoyer Recu" />
+	</form>
+	<form method="POST" th:action="@{/logout}">
+		<input type="submit" value="Logout" />
+	</form>
+</body>
+</html>

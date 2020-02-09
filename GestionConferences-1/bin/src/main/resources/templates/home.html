@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Inscription Conference</title>
+</head>
+
+<body>
+	<h1>Welcome to Inscription Conference</h1>
+
+	<form method="POST" th:action="@{/}">
+		<input type="submit" name="action" class="button" value="Admin" /> 
+		<input type="submit" name="action" class="button" value="Participant" />
+	</form>
+</body>
+</html>

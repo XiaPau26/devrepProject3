@@ -1,0 +1,82 @@
+ 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Payment</title>
+</head>
+<body>
+	<form method="POST" th:action="@{/paiement}" th:object="${paiement}">
+		<h3> Check your data </h3>
+		<table>
+		<tr>
+			<td> Title </td> 
+			<td> FirstName </td> 
+			<td> LastName </td> 
+			<td> Institution </td> 
+			<td> Address </td> 
+			<td> Zip </td> 
+			<td> City </td> 
+			<td> Country </td> 
+			<td> Email </td> 
+			<td> Phone </td> 
+			<td> Conference </td>
+			<td> Type d'inscription </td> 
+			<td> Prix </td>
+		</tr>
+		<tr>
+			<td> <span th:text="${form.title}"></span> </td>
+			<td> <span th:text="${form.firstName}"></span> </td>
+			<td> <span th:text="${form.lastName}"></span> </td>
+			<td> <span th:text="${form.institution}"></span> </td>
+			<td> <span th:text="${form.address}"></span> </td>
+			<td> <span th:text="${form.zip}"></span> </td>
+			<td> <span th:text="${form.city}"></span> </td>
+			<td> <span th:text="${form.country}"></span> </td>
+			<td> <span th:text="${form.email}"></span> </td>
+			<td> <span th:text="${form.phone}"></span> </td>
+			<td> <span th:text="${conference.name}"></span> </td>
+			<td> <span th:text="${typeinscription.libelle}"></span> </td>
+			<td> <span th:text="${typeinscription.tarif}"></span> </td>
+		</tr>
+		</table>
+		
+		<h3>Here's You'll pay...</h3>
+		<input type="hidden" name="idFormulaire" th:value="${form.id}" readonly="readonly"/><br/>
+		<!-- <input type="hidden" name="title" th:value="${form.title}" readonly="readonly"/><br/>
+		<input type="hidden" name="firstName" th:value="${form.firstName}" readonly="readonly"/><br/>
+		<input type="hidden" name="lastName" th:value="${form.lastName}" readonly="readonly"/><br/>
+		<input type="hidden" name="institution" th:value="${form.institution}" readonly="readonly"/><br/>
+		<input type="hidden" name="address" th:value="${form.address}" readonly="readonly"/><br/>
+		<input type="hidden" name="zip" th:value="${form.zip}" readonly="readonly"/><br/>
+		<input type="hidden" name="city" th:value="${form.city}" readonly="readonly"/><br/>
+		<input type="hidden" name="country" th:value="${form.country}" readonly="readonly"/><br/>
+		<input type="hidden" name="email" th:value="${form.email}" readonly="readonly"/><br/>
+		<input type="hidden" name="phone" th:value="${form.phone}" readonly="readonly"/><br/>
+		<input type="hidden" name="typeinscription" th:value="${form.typeinscription}" readonly="readonly"/><br/>
+		<input type="hidden" name="idType" th:value="${form.idType}" readonly="readonly"/><br/> -->
+		
+		<label for="ccNumber">Credit Card #: </label> 
+		<input name="ccNumber" type="text"/>
+		<span style="color:red" class="validationError" 
+				th:if="${#fields.hasErrors('ccNumber')}"
+				th:errors="*{ccNumber}">numero of credit cart Error 
+		</span><br/>
+		<label for="ccExpiration">Expiration:</label> 
+		<input name="ccExpiration" type="text" />
+		<span style="color:red" class="validationError" 
+				th:if="${#fields.hasErrors('ccExpiration')}"
+				th:errors="*{ccExpiration}">date of expiration Error 
+		</span><br/> 
+		<label for="ccCVV">CVV: </label> 
+		<input name="ccCVV" type="text" />
+		<span style="color:red" class="validationError" 
+				th:if="${#fields.hasErrors('ccCVV')}"
+				th:errors="*{ccCVV}">CVV Error 
+		</span><br /> 
+		
+		<input type="submit" value="Submit order" />
+	</form>
+</body>
+</html>

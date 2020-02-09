@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Choose admin</title>
+</head>
+<body>
+	<p>	
+		<a th:href="@{/manageadmin}" id="another">Return to ManageAdmin</a>
+	</p>
+	<h1>Welcome to Participant interface</h1>
+	<form method="POST" th:action="@{/chooseadmin}" th:object="${adminSelect}">
+		<label for="username">Type: </label> 
+		<select name="username" size="1">
+			<option th:each="admin : ${admins}" th:value="${admin.username}" th:text="${admin.username}"></option>
+		</select><br/><br/>
+		
+		<div th:each="conference : ${conferences}">
+			<input name="conf" type="checkbox" th:value="${conference.id}" />
+			<span th:text="${conference.name + ' : ' + conference.description}"></span> </td>
+		</div><br/>
+		<input type="submit" value="Validate" />
+	</form>
+</body>
+</html>

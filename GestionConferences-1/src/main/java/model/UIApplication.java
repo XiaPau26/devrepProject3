@@ -1,0 +1,30 @@
+package model;
+
+import java.security.Principal;
+import java.util.Base64;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+//@SpringBootApplication
+//@RestController
+//@CrossOrigin(origins="*")
+public class UIApplication {
+	public static void main(String[] args) { 
+		System.out.println("Dans le main");
+		SpringApplication.run(UIApplication.class, args);
+	}
+	
+//	@RequestMapping("/user")
+	public Principal user(Principal request) {
+		System.out.println("Dans la classe UIApplication user");
+		return request;
+//		String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
+//		return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+	}
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SuperAdmin Validation interface</title>
+</head>
+
+<body>
+	<p>
+		<a th:href="@{/superadmin}" id="another">Return to Super Admin interface</a>
+	</p>
+	<form method="POST" th:action="@{/superadminvalidate}"
+		th:object="${validate}">
+
+		<div th:if="${#fields.hasErrors()}">
+			<span style="color: red" class="validationError"> Please
+				correct the problems below and resubmit. </span>
+		</div>
+
+		<h2>All inscription need to validate</h2>
+		<table>
+			<tr>
+				<td></td>
+				<td>title</td>
+				<td>firstName</td>
+				<td>lastName</td>
+				<td>institution</td>
+				<td>address</td>
+				<td>zip</td>
+				<td>city</td>
+				<td>country</td>
+				<td>email</td>
+				<td>phone</td>
+				<td>type inscription</td>
+				<td>prix</td>
+			</tr>
+			<tr th:each="form : ${allform}">
+				<td><input name="idFormulaires" type="checkbox"
+					th:value="${form.id}" /></td>
+				<td><span th:text="${form.title}"></span></td>
+				<td><span th:text="${form.firstName}"></span></td>
+				<td><span th:text="${form.lastName}"></span></td>
+				<td><span th:text="${form.institution}"></span></td>
+				<td><span th:text="${form.address}"></span></td>
+				<td><span th:text="${form.zip}"></span></td>
+				<td><span th:text="${form.city}"></span></td>
+				<td><span th:text="${form.country}"></span></td>
+				<td><span th:text="${form.email}"></span></td>
+				<td><span th:text="${form.phone}"></span></td>
+				<td><span th:text="${listtype[form.idType].libelle}"></span></td>
+				<td><span th:text="${listtype[form.idType].tarif}"></span></td>
+			</tr>
+		</table>
+		<br /> <input type="submit" value="Validate" />
+	</form>
+</body>
+</html>

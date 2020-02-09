@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Manage admin</title>
+</head>
+
+<body>
+	<h1>Manage admin</h1>
+	<p>
+		<a th:href="@{/superadmin}" id="another">Return to Super Admin interface</a>
+	</p>
+	<form method="POST" th:action="@{/manageadmin}">
+		<input type="submit" name="action" class="button" value="AddAdmin" /> 
+		<input type="submit" name="action" class="button" value="chooseAdmin" />
+	</form>
+</body>
+</html>
