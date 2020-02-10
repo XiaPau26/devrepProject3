@@ -1863,3 +1863,68 @@
 2020-02-10 16:56:04,467 [Worker-98: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
 2020-02-10 16:56:04,469 [Worker-98: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-02-10 16:56:04,469 [Worker-98: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:08:45,032 [Worker-108: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:08:45,033 [Worker-108: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:08:45,035 [Worker-108: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:08:45,036 [Worker-108: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:08:45,037 [Worker-108: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:08:56,370 [Worker-110: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:08:56,371 [Worker-110: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:08:56,372 [Worker-110: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:08:56,375 [Worker-110: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:08:56,375 [Worker-110: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:28:37,465 [Worker-114: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:28:37,466 [Worker-114: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:28:37,468 [Worker-114: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:28:37,469 [Worker-114: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:28:37,470 [Worker-114: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:50:39,728 [Worker-119: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:50:39,734 [Worker-119: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:50:39,739 [Worker-119: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:50:39,741 [Worker-119: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:50:39,742 [Worker-119: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:54:42,557 [Worker-87: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:54:42,558 [Worker-87: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:54:42,559 [Worker-87: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:54:42,562 [Worker-87: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:54:42,562 [Worker-87: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:54:59,409 [Worker-113: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:54:59,410 [Worker-113: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:54:59,411 [Worker-113: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:54:59,413 [Worker-113: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:54:59,413 [Worker-113: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 17:55:32,111 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:55:32,111 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 17:55:32,112 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 17:55:32,113 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 17:55:32,114 [Worker-123: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 18:02:34,188 [Worker-125: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:02:34,189 [Worker-125: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 18:02:34,191 [Worker-125: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 18:02:34,192 [Worker-125: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:02:34,193 [Worker-125: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 18:04:17,992 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:04:17,993 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 18:04:17,994 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 18:04:17,995 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:04:17,996 [Worker-130: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 18:14:18,355 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:14:18,357 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 18:14:18,359 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 18:14:18,362 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:14:18,362 [Worker-133: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 18:40:59,366 [Worker-137: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:40:59,369 [Worker-137: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 18:40:59,372 [Worker-137: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 18:40:59,374 [Worker-137: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:40:59,374 [Worker-137: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 18:44:49,568 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:44:49,569 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 18:44:49,571 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 18:44:49,572 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 18:44:49,572 [Worker-139: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources
+2020-02-10 19:11:30,704 [Worker-147: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 19:11:30,705 [Worker-147: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-02-10 19:11:30,708 [Worker-147: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 19 resources
+2020-02-10 19:11:30,710 [Worker-147: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-02-10 19:11:30,710 [Worker-147: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/paulinexia/Desktop/JEE/front/devrep3/GestionConferences-1/src/test/resources

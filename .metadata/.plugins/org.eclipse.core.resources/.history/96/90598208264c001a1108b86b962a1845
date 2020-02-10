@@ -28,7 +28,7 @@ public class User implements UserDetails{
 
 	@Column
 	@ElementCollection(targetClass=Long.class)
-	private Long conf[];
+	private List<Long> conf;
 
 	public User() {
 	}
@@ -97,11 +97,11 @@ public class User implements UserDetails{
 		this.password = password;
 	}
 
-	public Long[] getConf() {
+	public List<Long> getConf() {
 		return conf;
 	}
 
-	public void setConf(Long[] conf) {
+	public void setConf(List<Long> conf) {
 		this.conf = conf;
 	}
 }

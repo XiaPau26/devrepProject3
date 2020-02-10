@@ -52,7 +52,7 @@ public class ChooseAdminController {
 	public String processChoose(@Valid User admin, Errors errors) {
 		// System.out.println(admin + " " + admin.getUsername() + " "+ admin.getConf());
 
-		if (admin.getConf() == null || admin.getConf().length == 0)
+		if (admin.getConf() == null || admin.getConf().isEmpty())
 			return "redirect:/chooseadmin";
 
 		acRepo.delete(admin.getUsername());
