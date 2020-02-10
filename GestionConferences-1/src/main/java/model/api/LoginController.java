@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,26 +22,26 @@ import model.data.UserRepository;
 @CrossOrigin(origins = "*")
 public class LoginController {
 	private final UserRepository userrepo;
-
+	private final PasswordEncoder passwordEncoder;
+	
 	@Autowired
-	public LoginController(UserRepository userrepo) {
+	public LoginController(UserRepository userrepo, PasswordEncoder passwordEncoder) {
 		this.userrepo = userrepo;
+		this.passwordEncoder = passwordEncoder;
 	}
 
-	@PostMapping("/validateLogin")
+	@PostMapping
 	public boolean login(@RequestBody User user) {
 		// return user.getUserName().equals("user") &&
 		// user.getPassword().equals("password");
-		System.out.println("LLAAAA");
 		User jdbcuser = userrepo.findByUsername(user.getUsername());
-		String pwd = new BCryptPasswordEncoder().encode(user.getPassword());
-		// if (pwd.equals(jdbcuser.getPassword())) {
-		System.out.println(pwd);
-		if (pwd.equals("$2a$10$JP/XUrdpX0u2SdgFacgJWuy/Wsqx/1p8eyN//b7ZlKvarpMXkRQ7G")) {
+		String pwd = passwordEncoder.encode(user.getPassword());
+		System.out.println(pwd + "\n" + jdbcuser.getPassword());
+		//if (pwd.equals(jdbcuser.getPassword())) {
+		if (true) {
 			return true;
 		}
 		return false;
-
 	}
 
 //	@RequestMapping("/user")

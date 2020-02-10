@@ -1,0 +1,148 @@
+package model.api;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.mail.MessagingException;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import lombok.extern.slf4j.Slf4j;
+import model.AdminConf;
+import model.Conference;
+import model.Formulaire;
+import model.FormulaireValidate;
+import model.TypeInscription;
+import model.URL;
+import model.data.AdminConfRepository;
+import model.data.ConferenceRepository;
+import model.data.FormulaireRepository;
+import model.data.UrlRepository;
+import model.mail.SendMail;
+
+@Slf4j
+@Controller
+public class AdminValidateController {
+
+	private final FormulaireRepository formrepo;
+	private final UrlRepository urlrepo;
+	private final ConferenceRepository confrepo;
+	private final AdminConfRepository adminconfrepo;
+
+	@Autowired
+	public AdminValidateController(FormulaireRepository form, UrlRepository urlrepo, ConferenceRepository confrepo,
+			AdminConfRepository adminconfrepo) {
+		this.formrepo = form;
+		this.urlrepo = urlrepo;
+		this.confrepo = confrepo;
+		this.adminconfrepo = adminconfrepo;
+	}
+
+	@GetMapping("/adminvalidate")
+	public String showAdminValidate(Model model) {
+		// retrouver l'admin connecté
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<Formulaire> formulaires = new ArrayList<Formulaire>();
+//		if (principal instanceof UserDetails) {
+//			String username = ((UserDetails) principal).getUsername();
+//			System.out.println("connecte : " + username);
+//			if (username.equals("superadmin")) {
+//				Iterable<Formulaire> formul = formrepo.findAllNoValidated();
+//				formul.forEach(f -> formulaires.add(f));
+//			} else {
+//				Iterable<AdminConf> adminOfConf = adminconfrepo.findConfByAdmin(username);
+//				adminOfConf.forEach(adconf -> {
+//					Iterable<Formulaire> form = formrepo
+//							.findAllNoValidatedOfConference(((AdminConf) adconf).getConfenrece());
+//					form.forEach(f -> formulaires.add(f));
+//				});
+//			}
+//			model.addAttribute("allform", formulaires);
+//
+//		} else {
+//			return "erreur";
+//		}
+//
+		Map<String, TypeInscription> typeinscriptions = new HashMap<>();
+		Map<String, Conference> conferences = new HashMap<>();
+
+		for (Formulaire f : formulaires) {
+			TypeInscription ti = formrepo.findOneTypeInscription(Long.parseLong(f.getIdType()));
+			typeinscriptions.put(f.getIdType(), ti);
+
+			Conference conf = confrepo.findOneConference(Long.parseLong(f.getIdConference()));
+			conferences.put(f.getIdConference(), conf);
+		}
+		model.addAttribute("listtype", typeinscriptions);
+		model.addAttribute("allconference", conferences);
+
+		model.addAttribute("validate", new FormulaireValidate());
+		return "adminvalidate";
+	}
+
+	@RequestMapping(value = "/adminvalidate", method = RequestMethod.POST)
+	public String processValidate(@RequestParam("action") String submitValue, @Valid FormulaireValidate fo,
+			Errors errors) {
+		if (errors.hasErrors() /* || !validateRepo.validation(log) */) {
+			return "redirect:/adminvalidate";
+		}
+		if (submitValue.equalsIgnoreCase("Validate")) {
+			System.out.println("validate");
+
+			for (String id : fo.getIdFormulaires()) {
+				UriComponents uriComponents = UriComponentsBuilder.newInstance().scheme("http").host("localhost:8080")
+						.path("/paiement/" + id).build();
+				formrepo.validatedForm(Integer.parseInt(id));
+
+				// date expiration
+				// 24h
+				long expirerDans = 86400000;
+				// long expirerDans = 60000; // 1 min
+				Date date = new Date(Calendar.getInstance().getTime().getTime() + expirerDans);
+				SimpleDateFormat readFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
+				String expiration = readFormat.format(date);
+				URL url = new URL();
+				url.setUrl(uriComponents.toUriString());
+				url.setDateExpiration(expiration);
+				urlrepo.save(url);
+//				try {
+//					SendMail.sendEmailConfirmationInscription("ziyu.ye97@gmail.com", uriComponents.toUriString());
+//				} catch (MessagingException | IOException e) {
+//					e.printStackTrace();
+//				}
+			}
+
+			return "successvalidate";
+		} else {
+			// refus
+			for (String id : fo.getIdFormulaires()) {
+				formrepo.delete(Long.parseLong(id));
+//				try {
+//					SendMail.sendEmailRefusInscription("ziyu.ye97@gmail.com");
+//				} catch (MessagingException | IOException e) {
+//					e.printStackTrace();
+//				}
+			}
+			return "successvalidate";
+		}
+	}
+
+}

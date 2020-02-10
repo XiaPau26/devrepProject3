@@ -56,7 +56,6 @@ public class FormulaireController {
 
 	@PostMapping
 	public void registerFormulaire(@RequestBody Formulaire form, BindingResult bindingResult) {
-		System.out.println("Hereeee");
 		if (bindingResult.hasErrors()) {
 			throw new ValidationException("Register Formulaire has errors");
 		}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;PaiementController.java&apos; to &apos;GestionConferences-1/src/main/java/model.api&apos;&#x0A;- Original project: &apos;GestionConferences-1&apos;&#x0A;- Destination element: &apos;GestionConferences-1/src/main/java/model.api&apos;&#x0A;- Original element: &apos;model.web.PaiementController.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java&lt;model.api" element1="/src\/main\/java&lt;model.web{PaiementController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1581349982150" units="1" version="1.0"/>
+</session>

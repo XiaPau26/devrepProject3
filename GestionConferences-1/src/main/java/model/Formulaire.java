@@ -1,13 +1,10 @@
 package model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
-@Entity
 public class Formulaire {
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -35,7 +32,10 @@ public class Formulaire {
 	private String phone;
 	private String idConference;
 	private String idType;
-	private int validated;	
+	private int validated;
+	
+	private String titleConf;
+	private String typeTarif;
 	
 	public Formulaire(@NotBlank(message = "Title is required") String title,
 			@NotBlank(message = "Firstname is required") String firstName,
@@ -174,5 +174,21 @@ public class Formulaire {
 
 	public void setIdType(String idType) {
 		this.idType = idType;
+	}
+
+	public String getTitleConf() {
+		return titleConf;
+	}
+
+	public void setTitleConf(String titleConf) {
+		this.titleConf = titleConf;
+	}
+
+	public String getTypeTarif() {
+		return typeTarif;
+	}
+
+	public void setTypeTarif(String typeTarif) {
+		this.typeTarif = typeTarif;
 	}
 }

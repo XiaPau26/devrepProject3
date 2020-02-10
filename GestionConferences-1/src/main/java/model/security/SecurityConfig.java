@@ -54,19 +54,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //	        .authoritiesByUsernameQuery("select username, authority "
 //	            + "from authorities where username=?")
 //	        .passwordEncoder(new BCryptPasswordEncoder());
+		System.out.println("dans le premier config");
 		builder.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		System.out.println("dans le deuxieme config");
 		http.sessionManagement().maximumSessions(3);
-		http.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
+		http.httpBasic().and()
+		.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
 				// .antMatchers("/adminvalidate").hasRole("STAFF")
 				.antMatchers("/adminvalidate").access("authenticated")
-				.antMatchers("/", "/formulaire", "/login").access("permitAll")
+				.antMatchers("/", "/formulaire", "/login").permitAll()
 				.and().exceptionHandling().accessDeniedPage("/erreur")
 				.and().formLogin()
-				.loginPage("/login")//.successHandler(urlAuthentificationSuccessHandler())
+				.loginPage("/login").successHandler(urlAuthentificationSuccessHandler())
 				.and().logout().logoutSuccessUrl("/");// .successForwardUrl("/adminvalidate");
 		// .anyRequest().hasAnyRole("ADMIN", "USER").and().httpBasic(); // Authenticate
 		// users with
