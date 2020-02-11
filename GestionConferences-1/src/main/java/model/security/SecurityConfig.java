@@ -24,7 +24,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //	@Autowired
-//	DataSource dataSource;
+////	DataSource dataSource;
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -32,17 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
-
-	@Bean
-	public AuthenticationSuccessHandler urlAuthentificationSuccessHandler() {
-		return new UrlAuthentifacationSuccessHandler();
-	}
-	
-	@Bean
-	public HttpSessionEventPublisher httpSessionEventPublisher() {
-	    return new HttpSessionEventPublisher();
-	}
-
+//
+//	@Bean
+//	public AuthenticationSuccessHandler urlAuthentificationSuccessHandler() {
+//		return new UrlAuthentifacationSuccessHandler();
+//	}
+//	
+//	@Bean
+//	public HttpSessionEventPublisher httpSessionEventPublisher() {
+//	    return new HttpSessionEventPublisher();
+//	}
+//
 	@Override
 	protected void configure(AuthenticationManagerBuilder builder) throws Exception {
 //		auth.inMemoryAuthentication().withUser("buzz").password("infinity").authorities("ROLE_USER").and()
@@ -54,28 +54,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //	        .authoritiesByUsernameQuery("select username, authority "
 //	            + "from authorities where username=?")
 //	        .passwordEncoder(new BCryptPasswordEncoder());
-		System.out.println("dans le premier config");
+		// System.out.println(encoder().encode("admin@123"));
 		builder.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		System.out.println("dans le deuxieme config");
-		http.sessionManagement().maximumSessions(3);
-		http.httpBasic().and()
-		.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
-				// .antMatchers("/adminvalidate").hasRole("STAFF")
-				.antMatchers("/adminvalidate").access("authenticated")
-				.antMatchers("/", "/formulaire", "/login").permitAll()
-				.and().exceptionHandling().accessDeniedPage("/erreur")
-				.and().formLogin()
-				.loginPage("/login").successHandler(urlAuthentificationSuccessHandler())
-				.and().logout().logoutSuccessUrl("/");// .successForwardUrl("/adminvalidate");
-		// .anyRequest().hasAnyRole("ADMIN", "USER").and().httpBasic(); // Authenticate
-		// users with
-
-		http.csrf().ignoringAntMatchers("/h2-console/**");
-		http.csrf().disable().authorizeRequests().anyRequest().permitAll(); 
-		http.headers().frameOptions().sameOrigin();
+		http.cors();
+		http.csrf().disable().authorizeRequests().antMatchers("/api/addadmin").hasRole("ADMIN").and().httpBasic();
+//		System.out.println("dans le deuxieme config");
+//		http.sessionManagement().maximumSessions(3);
+//		http.cors();
+//		http.httpBasic().and()
+//		.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
+//				 .antMatchers("/adminvalidate").hasRole("STAFF")
+//				.antMatchers("/adminvalidate").access("authenticated")
+//				.antMatchers("/", "/formulaire").permitAll();
+//				.and().exceptionHandling().accessDeniedPage("/erreur");
+////				.and().formLogin()
+////				.loginPage("/login").successHandler(urlAuthentificationSuccessHandler())
+////				.and().logout().logoutSuccessUrl("/");// .successForwardUrl("/adminvalidate");
+//		// .anyRequest().hasAnyRole("ADMIN", "USER").and().httpBasic(); // Authenticate
+//		// users with
+//
+//		http.csrf().ignoringAntMatchers("/h2-console/**");
+//		http.csrf().disable();//.authorizeRequests().anyRequest().permitAll(); 
+//		http.headers().frameOptions().sameOrigin();
 	}
 }
