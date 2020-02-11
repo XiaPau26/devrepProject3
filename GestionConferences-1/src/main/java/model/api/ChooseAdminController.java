@@ -22,37 +22,46 @@ import model.data.ConferenceRepository;
 import model.data.UserRepository;
 
 @RestController
-@RequestMapping(path="/api/addadmin", produces = { "application/json", "text/xml" })
-@CrossOrigin(origins = "*")
-public class AddAdminController {
+@RequestMapping(path="/api/manageadmin", produces = { "application/json", "text/xml" })
+@CrossOrigin(origins="*")
+public class ChooseAdminController {
 
 	private final UserRepository loggingRepo;
 	private final ConferenceRepository confRepo;
 	private final AdminConfRepository acRepo;
 
 	@Autowired
-	public AddAdminController(UserRepository loggingRepo, ConferenceRepository confRepo, AdminConfRepository acRepo) {
+	public ChooseAdminController(UserRepository loggingRepo, ConferenceRepository confRepo,
+			AdminConfRepository acRepo) {
 		this.loggingRepo = loggingRepo;
 		this.confRepo = confRepo;
 		this.acRepo = acRepo;
 	}
 
-	@GetMapping
-	public Iterable<Conference> addAdmin() {
+	@GetMapping("/getSimpleAdmins")
+	public Iterable<User> getAdmins() {
+		Iterable<User> admins = loggingRepo.findSimpleAdmin();
+		return admins;
+	}
+	
+	@GetMapping("/getConferences")
+	public Iterable<Conference> getConferences() {
 		Iterable<Conference> conferences = confRepo.findAllConference();
 		return conferences;
 	}
 
 	@PostMapping
-	public void handleAddAdmin(@RequestBody User admin, BindingResult bindingResult) {
+	public void processChoose(@RequestBody User admin, BindingResult bindingResult) {
+		// System.out.println(admin + " " + admin.getUsername() + " "+ admin.getConf());
+
 		if (bindingResult.hasErrors()) {
 			throw new ValidationException("Register Formulaire has errors");
 		}
 		
-		loggingRepo.save(admin);
+		acRepo.delete(admin.getUsername());
 		List<AdminConf> ac = new ArrayList<AdminConf>();
-		for(Long idConf : admin.getConf()) 
+		for (Long idConf : admin.getConf())
 			ac.add(new AdminConf(admin.getUsername(), idConf));
-		acRepo.save(ac);		
+		acRepo.save(ac);
 	}
 }

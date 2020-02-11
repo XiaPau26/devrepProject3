@@ -1,16 +1,17 @@
-package model.api;
+package model.web;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.ValidationException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,37 +23,42 @@ import model.data.ConferenceRepository;
 import model.data.UserRepository;
 
 @RestController
-@RequestMapping(path="/api/addadmin", produces = { "application/json", "text/xml" })
-@CrossOrigin(origins = "*")
-public class AddAdminController {
+@RequestMapping(path="/api/manageadmin", produces = { "application/json", "text/xml" })
+@CrossOrigin(origins="*")
+public class ChooseAdminController {
 
 	private final UserRepository loggingRepo;
 	private final ConferenceRepository confRepo;
 	private final AdminConfRepository acRepo;
 
 	@Autowired
-	public AddAdminController(UserRepository loggingRepo, ConferenceRepository confRepo, AdminConfRepository acRepo) {
+	public ChooseAdminController(UserRepository loggingRepo, ConferenceRepository confRepo,
+			AdminConfRepository acRepo) {
 		this.loggingRepo = loggingRepo;
 		this.confRepo = confRepo;
 		this.acRepo = acRepo;
 	}
 
 	@GetMapping
-	public Iterable<Conference> addAdmin() {
+	public String showChoose() {
+		Iterable<User> admins = loggingRepo.findSimpleAdmin();
 		Iterable<Conference> conferences = confRepo.findAllConference();
-		return conferences;
+
+		return "chooseadmin";
 	}
 
 	@PostMapping
-	public void handleAddAdmin(@RequestBody User admin, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			throw new ValidationException("Register Formulaire has errors");
-		}
-		
-		loggingRepo.save(admin);
+	public String processChoose(@Valid User admin, Errors errors) {
+		// System.out.println(admin + " " + admin.getUsername() + " "+ admin.getConf());
+
+		if (admin.getConf() == null || admin.getConf().length == 0)
+			return "redirect:/chooseadmin";
+
+		acRepo.delete(admin.getUsername());
 		List<AdminConf> ac = new ArrayList<AdminConf>();
-		for(Long idConf : admin.getConf()) 
+		for (Long idConf : admin.getConf())
 			ac.add(new AdminConf(admin.getUsername(), idConf));
-		acRepo.save(ac);		
+		acRepo.save(ac);
+		return "successmodif";
 	}
 }

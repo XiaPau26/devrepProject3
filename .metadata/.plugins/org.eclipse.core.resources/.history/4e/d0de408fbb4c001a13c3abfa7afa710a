@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 // https://docs.spring.io/spring-security/site/docs/current/guides/html5/form-javaconfig.html
 // https://www.boraji.com/spring-security-5-jdbc-based-authentication-example
@@ -60,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors();
 	//	http.csrf().ignoringAntMatchers("/h2-console/**");
 		http.csrf().disable().authorizeRequests().antMatchers("/api/addadmin").hasRole("ADMIN")
-		.antMatchers("/h2-console/**").permitAll().and().httpBasic();
+		..antMatchers("/h2-console/**").permitAll().and().httpBasic();
 //		http.sessionManagement().maximumSessions(3);
 //		http.httpBasic().and()
 //		.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
@@ -75,6 +77,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		// users with
 //
 //		http.csrf().disable();//.authorizeRequests().anyRequest().permitAll(); 
-		http.headers().frameOptions().disable();
+//		http.headers().frameOptions().sameOrigin();
 	}
 }

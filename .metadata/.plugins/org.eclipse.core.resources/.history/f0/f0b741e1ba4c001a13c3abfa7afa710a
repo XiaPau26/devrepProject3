@@ -1,5 +1,6 @@
 package model.security;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+
 
 // https://docs.spring.io/spring-security/site/docs/current/guides/html5/form-javaconfig.html
 // https://www.boraji.com/spring-security-5-jdbc-based-authentication-example
@@ -28,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 //
 //	@Bean
 //	public AuthenticationSuccessHandler urlAuthentificationSuccessHandler() {
@@ -58,10 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
-	//	http.csrf().ignoringAntMatchers("/h2-console/**");
-		http.csrf().disable().authorizeRequests().antMatchers("/api/addadmin").hasRole("ADMIN")
-		.antMatchers("/h2-console/**").permitAll().and().httpBasic();
+		http.csrf().ignoringAntMatchers("/h2-console/**");
+		http.authorizeRequests().antMatchers("/api/addadmin").hasRole("ADMIN").and().httpBasic();
+//		System.out.println("dans le deuxieme config");
 //		http.sessionManagement().maximumSessions(3);
+//		http.cors();
 //		http.httpBasic().and()
 //		.authorizeRequests().antMatchers("/addadmin", "/superadmin", "/manageadmin", "/chooseadmin", "/addadmin").hasRole("ADMIN")
 //				 .antMatchers("/adminvalidate").hasRole("STAFF")
@@ -75,6 +79,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		// users with
 //
 //		http.csrf().disable();//.authorizeRequests().anyRequest().permitAll(); 
-		http.headers().frameOptions().disable();
+//		http.headers().frameOptions().sameOrigin();
 	}
 }
